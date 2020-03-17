@@ -40,7 +40,7 @@ class Calendar_controls extends React.Component {
             let startOfMonth = new Date(currentYear, currentMonth, 1).getDay();
             let monthDays = MONTHS[$(document).find('#month').val()].days;
             let days = $(document).find('.days').children();
-            $(document).find('.num').empty();
+            $(document).find('.num-date').empty();
 
             _.range(1, 43).forEach(function (dayIndex, i) {
                 let day = $(days[startOfMonth + dayIndex - 1]);
@@ -55,6 +55,7 @@ class Calendar_controls extends React.Component {
                 }
                 if (dayIndex > monthDays) {
                     day.find('.num').html(dayIndex - monthDays).parent().parent().addClass("dead_month_color");
+                    day.find('.num').attr('value', (dayIndex - monthDays))
                     if (nextMonth == 13) {
                         nextMonth = 1;
                         currentYear = Number(currentYear) + 1;
@@ -67,20 +68,24 @@ class Calendar_controls extends React.Component {
                             let standardDayIndex = '0' + (dayIndex - monthDays);
                             day.find('.date-value').html(currentYear + '-' + standardMonth + '-' + standardDayIndex);
                             day.find('.num-date').html(newDayIndex).parent().parent().addClass("dead_month_color");
+                            day.find('.num-date').parent().parent().attr('value', newDayIndex)
                         } else {
                             day.find('.date-value').html(currentYear + '-' + standardMonth + '-' + (dayIndex - monthDays));
                             day.find('.num-date').html((dayIndex - monthDays)).parent().parent().addClass("dead_month_color");
+                            day.find('.num-date').parent().parent().attr('value', (dayIndex - monthDays))
                         }
                     } else {
                         let standardMonth = '0' + nextMonth;
                         if ((dayIndex - monthDays) < 10) {
                             let newDayIndex = (dayIndex - monthDays);
                             let standardDayIndex = '0' + (dayIndex - monthDays);
-                            day.find('.date-value').html(currentYear + '-' + standardMonth + '-' + standardDayIndex);;
+                            day.find('.date-value').html(currentYear + '-' + standardMonth + '-' + standardDayIndex);
                             day.find('.num-date').html(newDayIndex).parent().parent().addClass("dead_month_color");
+                            day.find('.num-date').parent().parent().attr('value', newDayIndex)
                         } else {
                             day.find('.date-value').html(currentYear + '-' + standardMonth + '-' + (dayIndex - monthDays));
                             day.find('.num-date').html((dayIndex - monthDays)).parent().parent().addClass("dead_month_color");
+                            day.find('.num-date').parent().parent().attr('value', (dayIndex - monthDays))
                         }
                     }
                 } else {
@@ -94,9 +99,11 @@ class Calendar_controls extends React.Component {
                             let standardNewDays = '0' + dayIndex;
                             day.find('.date-value').html(currentYear + '-' + standardNewMonth + '-' + standardNewDays);
                             day.find('.num-date').html("&nbsp" + newDays + "&nbsp");
+                            day.find('.num-date').parent().parent().attr('value', newDays)
                         } else {
                             day.find('.date-value').html(currentYear + '-' + standardNewMonth + '-' + (dayIndex));
                             day.find('.num-date').html((dayIndex));
+                            day.find('.num-date').parent().parent().attr('value', (dayIndex))
                         }
                     } else {
                         if (dayIndex < 10) {
@@ -104,9 +111,11 @@ class Calendar_controls extends React.Component {
                             let standardNewDays = '0' + dayIndex;
                             day.find('.date-value').html(currentYear + '-' + thisMonth + '-' + standardNewDays);
                             day.find('.num-date').html("&nbsp" + newDays + "&nbsp");
+                            day.find('.num-date').parent().parent().attr('value', newDays)
                         } else {
                             day.find('.date-value').html(currentYear + '-' + thisMonth + '-' + (dayIndex));
                             day.find('.num-date').html((dayIndex));
+                            day.find('.num-date').parent().parent().attr('value', (dayIndex));
                         }
                     }
                 }
