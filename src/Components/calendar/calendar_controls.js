@@ -244,7 +244,6 @@ class Calendar_controls extends React.Component {
                     <form className="select-form">
                         <div className="date-selectors">
                             <select onChange={this.handleChange} name="select" className="month-selector selector" id="month" defaultValue={month}>
-                                <option value={month}>{MONTHS[month].name}</option>
                                 <option value="0">{MONTHS[0].name}</option>
                                 <option value="1">{MONTHS[1].name}</option>
                                 <option value="2">{MONTHS[2].name}</option>
