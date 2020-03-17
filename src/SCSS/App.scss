@@ -1,0 +1,54 @@
+@import url(https://weloveiconfonts.com/api/?family=entypo|fontawesome);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/* =================================================================
+variables
+================================================================= */
+//Breakpoints
+$sm-small: 320px;
+$mid-small: 550px;
+$end-small: 800px;
+$max-width: 1400px;
+
+//System variables
+$primary: red;// #00B0FF;
+// $primary-contrast: #005f90;
+$accent: lightgray;
+$textwht: #fff;
+$textdrk: #333333;
+$alert: red;
+
+.container {
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+header {
+  background-color: $primary;
+  div {
+
+    @media screen and (min-width: $mid-small) {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    a {
+      display: block;
+      color: $textwht;
+      text-align: center;
+    }
+  }
+}
