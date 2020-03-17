@@ -7,7 +7,13 @@ class Add_item extends React.Component {
 
         this.openForm = this.openForm.bind(this);
         this.closeForm = this.closeForm.bind(this);
-        this.selectItemFrequency = this.selectItemFrequency.bind(this);
+        this.selectItemEvent = this.selectItemEvent.bind(this);
+        this.selectItemFreq = this.selectItemFreq.bind(this);
+        // this.itemOne = this.itemOne.bind(this);
+        // this.itemTwo = this.itemTwo.bind(this);
+        // this.itemThree = this.itemThree.bind(this);
+        // this.itemFour = this.itemFour.bind(this);
+        // this.itemFive = this.itemFive.bind(this);
     }
 
     openForm(e) {
@@ -25,6 +31,7 @@ class Add_item extends React.Component {
             day = "0" + day;
         var today = year + '-' + month + '-' + day;
         $('.date-input').val(today);
+        console.log(currentTime)
         $('.time-input').val(currentTime);
         $('.add-item-form').addClass('show-form');
         $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').addClass('show-input');
@@ -49,7 +56,29 @@ class Add_item extends React.Component {
         window.setTimeout(scrollDay, .3);
     }
 
-    selectItemFrequency(e) {
+    // itemOne(e) {
+    //     $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').addClass('show-input');
+    //     $('.amount-input, .amount-label').removeClass('show-input');
+    // }
+    // itemTwo(e) {
+    //     $('.time-input, .time-label').addClass('show-input');
+    //     $('.event-description, .description-label, .location-input, .location-label').removeClass('show-input');
+    //     $('.amount-input, .amount-label').removeClass('show-input');
+    // }
+    // itemThree(e) {
+    //     $('.event-description, .description-label, .time-input, .time-label').addClass('show-input');
+    //     $('.amount-input, .amount-label, .location-input, .location-label').removeClass('show-input');
+    // }
+    // itemFour(e) {
+    //     $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').removeClass('show-input');
+    //     $('.amount-input, .amount-label').addClass('show-input');
+    // }
+    // itemFive(e) {
+    //     $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').removeClass('show-input');
+    //     $('.amount-input, .amount-label').addClass('show-input');
+    // }
+
+    selectItemEvent(e) {
         $('.checkbox').not(e.currentTarget).prop('checked', false);
         $('.select-item label').removeClass('selected');
 
@@ -77,6 +106,42 @@ class Add_item extends React.Component {
         }
     }
 
+    selectItemFreq(e) {
+        $('.frequency').not(e.currentTarget).prop('checked', false);
+        $('.checkbox label').removeClass('selected');
+
+        switch ($(e.currentTarget).hasClass('frequency_1')) {
+            case $(e.currentTarget).hasClass('frequency_1'):
+                console.log("Item 1")
+                $(e.currentTarget).addClass('selected')
+                break;
+            case $(e.currentTarget).hasClass('frequency_2'):
+                console.log("Item 2")
+                $(e.currentTarget).addClass('selected')
+                break;
+            case $(e.currentTarget).hasClass('frequency_3'):
+                console.log("Item 3")
+                $(e.currentTarget).addClass('selected')
+                break;
+            case $(e.currentTarget).hasClass('frequency_4'):
+                console.log("Item 4")
+                $(e.currentTarget).addClass('selected')
+                break;
+            case $(e.currentTarget).hasClass('frequency_5'):
+                console.log("Item 5")
+                $(e.currentTarget).addClass('selected')
+                break;
+            case $(e.currentTarget).hasClass('frequency_6'):
+                console.log("Item 5")
+                $(e.currentTarget).addClass('selected')
+                break;
+            case $(e.currentTarget).hasClass('frequency_7'):
+                console.log("Item 5")
+                $(e.currentTarget).addClass('selected')
+                break;
+        }
+    }
+
     render() {
         return (
             <div className="add-item-container">
@@ -93,19 +158,19 @@ class Add_item extends React.Component {
                         <label>Select Type</label>
                         <div className="select-item">
                             <input className="checkbox" type="checkbox" id="checkbox1" defaultChecked />
-                            <label onClick={this.selectItemFrequency}htmlFor="checkbox1" className="item_1">Event</label>
+                            <label onClick={this.selectItemEvent}htmlFor="checkbox1" className="item_1">Event</label>
 
                             <input className="checkbox" type="checkbox" id="checkbox2" />
-                            <label onClick={this.selectItemFrequency}htmlFor="checkbox2" className="item_2">Reminder</label>
+                            <label onClick={this.selectItemEvent}htmlFor="checkbox2" className="item_2">Reminder</label>
 
                             <input className="checkbox" type="checkbox" id="checkbox3" />
-                            <label onClick={this.selectItemFrequency}htmlFor="checkbox3" className="item_3">Task</label>
+                            <label onClick={this.selectItemEvent}htmlFor="checkbox3" className="item_3">Task</label>
 
                             <input className="checkbox" type="checkbox" id="checkbox4" />
-                            <label onClick={this.selectItemFrequency}htmlFor="checkbox4" className="item_4">Budget</label>
+                            <label onClick={this.selectItemEvent}htmlFor="checkbox4" className="item_4">Budget</label>
 
                             <input className="checkbox" type="checkbox" id="checkbox5" />
-                            <label onClick={this.selectItemFrequency}htmlFor="checkbox5" className="item_5">Food</label>
+                            <label onClick={this.selectItemEvent}htmlFor="checkbox5" className="item_5">Food</label>
                         </div>
 
                         <label>Select Date</label>
@@ -117,25 +182,25 @@ class Add_item extends React.Component {
                         <label>Select Frequency</label>
                         <div className="checkbox">
                             <input className="frequency first-checkbox" type="checkbox" id="frequency1" value="Once" defaultChecked />
-                            <label htmlFor="frequency1" className="frequency_1">Once</label>
+                            <label onClick={this.selectItemFreq} htmlFor="frequency1" className="frequency_1">Once</label>
 
                             <input className="frequency" type="checkbox" value="Daily" id="frequency2" />
-                            <label htmlFor="frequency2" className="frequency_2">Daily</label>
+                            <label onClick={this.selectItemFreq} htmlFor="frequency2" className="frequency_2">Daily</label>
 
                             <input className="frequency" type="checkbox" value="Weekly" id="frequency3" />
-                            <label htmlFor="frequency3" className="frequency_3">Weekly</label>
+                            <label onClick={this.selectItemFreq} htmlFor="frequency3" className="frequency_3">Weekly</label>
 
                             <input className="frequency" type="checkbox" value="Bi-weekly" id="frequency4" />
-                            <label htmlFor="frequency4" className="frequency_4">Bi-Weekly</label>
+                            <label onClick={this.selectItemFreq} htmlFor="frequency4" className="frequency_4">Bi-Weekly</label>
 
                             <input className="frequency" type="checkbox" value="Monthly" id="frequency5" />
-                            <label htmlFor="frequency5" className="frequency_5">Monthly</label>
+                            <label onClick={this.selectItemFreq} htmlFor="frequency5" className="frequency_5">Monthly</label>
 
                             <input className="frequency" type="checkbox" value="Semi-annual" id="frequency6" />
-                            <label htmlFor="frequency6" className="frequency_6">Semi-annual</label>
+                            <label onClick={this.selectItemFreq} htmlFor="frequency6" className="frequency_6">Semi-annual</label>
 
                             <input className="frequency" type="checkbox" value="Annual" id="frequency7" />
-                            <label htmlFor="frequency7" className="frequency_7">Annual</label>
+                            <label onClick={this.selectItemFreq} htmlFor="frequency7" className="frequency_7">Annual</label>
                         </div>
 
                         <label className="description-label">Description</label>
