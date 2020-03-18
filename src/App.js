@@ -1,21 +1,24 @@
 import React from 'react';
 import './SCSS/App.scss';
+import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './Components/navbar/navbar';
 import Calendar from './Components/calendar/calendar';
+import Signup from './Components/signup/signup';
+import Home from './Components/home/home';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <header>
-          <div>
-            <a>Signup</a>
-            <a>Login</a>
-            <a>Calendar</a>
-            <a>Settings</a>
-          </div>
-        </header>
-        <Calendar />
-      </div>
+      <Router>
+        <div className="container">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/signup" component={Signup} />
+            <Route path="/calendar" component={Calendar} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

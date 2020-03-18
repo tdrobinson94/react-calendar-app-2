@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 
 import '..//..//SCSS/calendar.scss';
 import Calendar_controls from './calendar_controls';

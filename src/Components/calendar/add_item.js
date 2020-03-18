@@ -9,11 +9,6 @@ class Add_item extends React.Component {
         this.closeForm = this.closeForm.bind(this);
         this.selectItemEvent = this.selectItemEvent.bind(this);
         this.selectItemFreq = this.selectItemFreq.bind(this);
-        // this.itemOne = this.itemOne.bind(this);
-        // this.itemTwo = this.itemTwo.bind(this);
-        // this.itemThree = this.itemThree.bind(this);
-        // this.itemFour = this.itemFour.bind(this);
-        // this.itemFive = this.itemFive.bind(this);
     }
 
     openForm(e) {
@@ -56,53 +51,36 @@ class Add_item extends React.Component {
         window.setTimeout(scrollDay, .3);
     }
 
-    // itemOne(e) {
-    //     $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').addClass('show-input');
-    //     $('.amount-input, .amount-label').removeClass('show-input');
-    // }
-    // itemTwo(e) {
-    //     $('.time-input, .time-label').addClass('show-input');
-    //     $('.event-description, .description-label, .location-input, .location-label').removeClass('show-input');
-    //     $('.amount-input, .amount-label').removeClass('show-input');
-    // }
-    // itemThree(e) {
-    //     $('.event-description, .description-label, .time-input, .time-label').addClass('show-input');
-    //     $('.amount-input, .amount-label, .location-input, .location-label').removeClass('show-input');
-    // }
-    // itemFour(e) {
-    //     $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').removeClass('show-input');
-    //     $('.amount-input, .amount-label').addClass('show-input');
-    // }
-    // itemFive(e) {
-    //     $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').removeClass('show-input');
-    //     $('.amount-input, .amount-label').addClass('show-input');
-    // }
-
     selectItemEvent(e) {
         $('.checkbox').not(e.currentTarget).prop('checked', false);
         $('.select-item label').removeClass('selected');
 
-        switch ($(e.currentTarget).hasClass('item_1')) {
-            case $(e.currentTarget).hasClass('item_1'):
-                console.log("Event")
-                $(e.currentTarget).addClass('selected');
-                break;
-            case $(e.currentTarget).hasClass('item_2'):
-                console.log("Reminder")
-                $(e.currentTarget).addClass('selected');
-                break;
-            case $(e.currentTarget).hasClass('item_3'):
-                console.log("Task")
-                $(e.currentTarget).addClass('selected');
-                break;
-            case $(e.currentTarget).hasClass('item_4'):
-                console.log("Budget")
-                $(e.currentTarget).addClass('selected');
-                break;
-            case $(e.currentTarget).hasClass('item_5'):
-                console.log("Food")
-                $(e.currentTarget).addClass('selected');
-                break;
+        if ($(e.currentTarget).hasClass('item_1')) {
+            console.log("Event")
+            $(e.currentTarget).addClass('selected');
+            $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').addClass('show-input');
+            $('.amount-input, .amount-label').removeClass('show-input');
+        } else if ($(e.currentTarget).hasClass('item_2')) {
+            console.log("Reminder")
+            $(e.currentTarget).addClass('selected');
+            $('.time-input, .time-label').addClass('show-input');
+            $('.event-description, .description-label, .location-input, .location-label').removeClass('show-input');
+            $('.amount-input, .amount-label').removeClass('show-input');
+        } else if ($(e.currentTarget).hasClass('item_3')) {
+            console.log("Task")
+            $(e.currentTarget).addClass('selected');
+            $('.event-description, .description-label, .time-input, .time-label').addClass('show-input');
+            $('.amount-input, .amount-label, .location-input, .location-label').removeClass('show-input');
+        } else if ($(e.currentTarget).hasClass('item_4')) {
+            console.log("Budget")
+            $(e.currentTarget).addClass('selected');
+            $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').removeClass('show-input');
+            $('.amount-input, .amount-label').addClass('show-input');
+        } else if ($(e.currentTarget).hasClass('item_5')) {
+            console.log("Food")
+            $(e.currentTarget).addClass('selected');
+            $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').removeClass('show-input');
+            $('.amount-input, .amount-label').addClass('show-input');
         }
     }
 
@@ -110,35 +88,27 @@ class Add_item extends React.Component {
         $('.frequency').not(e.currentTarget).prop('checked', false);
         $('.checkbox label').removeClass('selected');
 
-        switch ($(e.currentTarget).hasClass('frequency_1')) {
-            case $(e.currentTarget).hasClass('frequency_1'):
-                console.log("Item 1")
-                $(e.currentTarget).addClass('selected')
-                break;
-            case $(e.currentTarget).hasClass('frequency_2'):
-                console.log("Item 2")
-                $(e.currentTarget).addClass('selected')
-                break;
-            case $(e.currentTarget).hasClass('frequency_3'):
-                console.log("Item 3")
-                $(e.currentTarget).addClass('selected')
-                break;
-            case $(e.currentTarget).hasClass('frequency_4'):
-                console.log("Item 4")
-                $(e.currentTarget).addClass('selected')
-                break;
-            case $(e.currentTarget).hasClass('frequency_5'):
-                console.log("Item 5")
-                $(e.currentTarget).addClass('selected')
-                break;
-            case $(e.currentTarget).hasClass('frequency_6'):
-                console.log("Item 5")
-                $(e.currentTarget).addClass('selected')
-                break;
-            case $(e.currentTarget).hasClass('frequency_7'):
-                console.log("Item 5")
-                $(e.currentTarget).addClass('selected')
-                break;
+        if ($(e.currentTarget).hasClass('frequency_1')) {
+            console.log("Item 1")
+            $(e.currentTarget).addClass('selected')
+        } else if ($(e.currentTarget).hasClass('frequency_2')) {
+            console.log("Item 2")
+            $(e.currentTarget).addClass('selected')
+        } else if ($(e.currentTarget).hasClass('frequency_3')) {
+            console.log("Item 3")
+            $(e.currentTarget).addClass('selected')
+        } else if ($(e.currentTarget).hasClass('frequency_4')) {
+            console.log("Item 4")
+            $(e.currentTarget).addClass('selected')
+        } else if ($(e.currentTarget).hasClass('frequency_5')) {
+            console.log("Item 5")
+            $(e.currentTarget).addClass('selected')
+        } else if ($(e.currentTarget).hasClass('frequency_6')) {
+            console.log("Item 6")
+            $(e.currentTarget).addClass('selected')
+        } else if ($(e.currentTarget).hasClass('frequency_7')) {
+            console.log("Item 7")
+            $(e.currentTarget).addClass('selected')
         }
     }
 

@@ -10,6 +10,20 @@
   font-family: 'FontAwesome', sans-serif;
 }
 
+  
+$hamburger-padding-x                       : 15px !default;
+$hamburger-padding-y                       : 15px !default;
+$hamburger-layer-width                     : 40px !default;
+$hamburger-layer-height                    : 4px !default;
+$hamburger-layer-spacing                   : 6px !default;
+$hamburger-layer-color                     : white !default;
+$hamburger-layer-border-radius             : 4px !default;
+$hamburger-hover-opacity                   : 0.7 !default;
+$hamburger-hover-transition-duration       : 0.15s !default;
+$hamburger-hover-transition-timing-function: linear !default;
+
+@import "../../node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
+
 /* =================================================================
 variables
 ================================================================= */
@@ -37,12 +51,58 @@ $alert: red;
 
 header {
   background-color: $primary;
-  div {
+  width: 100%;
+  top: 0px;
+  z-index: 1;
+  position: sticky;
+  background-color: red;
+  z-index: 99999;
+
+  button {
+    margin: 20px;
+    border: none;
+    padding: 2.3px;
+    @media screen and (min-width: $mid-small) {
+      display: none;
+    }
+  }
+
+  .hamburger{
+    outline: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: 17.6px 15px;
+    .hamburger-label{
+      display: inline;
+      margin-left: 15px;
+      color: white;
+      z-index: 2;
+      font-size: 13px;
+      // text-indent: 99999;
+      // display: none;
+    }
+  }
+  
+  ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
     @media screen and (min-width: $mid-small) {
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+      padding: 20px;
+    }
+
+    li {
+      margin: 20px 0;
+
+      @media screen and (min-width: $mid-small) {
+        margin: 0;
+      }
     }
 
     a {
@@ -50,5 +110,14 @@ header {
       color: $textwht;
       text-align: center;
     }
+  }
+
+  .show-nav {
+    display: block;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 59px;
+    background: red;
   }
 }
