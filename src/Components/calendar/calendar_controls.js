@@ -163,11 +163,11 @@ class Calendar_controls extends React.Component {
         }
         function scrollDay() {
             if ($('.num-box').hasClass('day_background_color') === true) {
-                $('body, html').animate({ scrollTop: $('.day_background_color').offset().top - 150 }, 500);
+                $('body, html').animate({ scrollTop: $('.day_background_color').offset().top - 200 }, 500);
                 $(document).find('#todays-day').html($('.current-day').html())
             } else if ($('.num-date').hasClass('first-day') === true) {
                 $('.first-day').parent().parent().addClass('selected-day clicked-day');
-                $('body, html').animate({ scrollTop: $('.first-day').offset().top - 150 }, 500);
+                $('body, html').animate({ scrollTop: $('.first-day').offset().top - 200 }, 500);
                 $('.dead_month_color').removeClass('clicked-day');
             }
         }
@@ -176,8 +176,8 @@ class Calendar_controls extends React.Component {
         renderMonth();
         renderPrevMonthDays();
 
-        $('.dead_month_color').click(false);
     }
+    
 
     prevClick(e) {
         $('.extra').hide()
@@ -201,7 +201,7 @@ class Calendar_controls extends React.Component {
         function scrollDay() {
             if ($('.num-box').hasClass('selected-day')) {
                 console.log('change');
-                $('body, html').animate({ scrollTop: $('.selected-day').offset().top - 150 }, 500);
+                $('body, html').animate({ scrollTop: $('.selected-day').offset().top - 200 }, 500);
             }
         }
         window.setTimeout(scrollDay, 500);
@@ -216,7 +216,7 @@ class Calendar_controls extends React.Component {
         $(document).find('#month').val(month).change()
         $(document).find('#year').val(year).change()
         this.handleChange()
-        $('body, html').animate({ scrollTop: $('.day_background_color').offset().top - 150 }, 500);
+        $('body, html').animate({ scrollTop: $('.day_background_color').offset().top - 200 }, 500);
     }
 
     nextClick(e) {
@@ -240,7 +240,7 @@ class Calendar_controls extends React.Component {
 
         function scrollDay() {
             if ($('.num-box').hasClass('selected-day')) {
-                $('body, html').animate({ scrollTop: $('.selected-day').offset().top - 150 }, 500);
+                $('body, html').animate({ scrollTop: $('.selected-day').offset().top - 200 }, 500);
             }
         }
         window.setTimeout(scrollDay, .5);

@@ -28,7 +28,7 @@ class Calendar_main extends React.Component {
         }
 
         function scrollDay() {
-            $('body, html').animate({ scrollTop: $('.clicked-day').offset().top - 150 }, 500);
+            $('body, html').animate({ scrollTop: $('.clicked-day').offset().top - 200 }, 500);
         }
 
         window.setTimeout(scrollDay, .3);

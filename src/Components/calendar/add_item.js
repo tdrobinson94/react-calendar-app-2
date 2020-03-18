@@ -14,7 +14,8 @@ class Add_item extends React.Component {
     openForm(e) {
         let clock = new Date();
         let day = $('.clicked-day').attr('value');
-        let currentTime = clock.getHours() + ':' + clock.getMinutes()
+        let minutes = String(clock.getMinutes()).padStart(2, '0');
+        let currentTime = clock.getHours() + ':' + minutes;
 
         $('.select-item label').removeClass('selected');
         $('.checkbox label').removeClass('selected');
@@ -25,9 +26,9 @@ class Add_item extends React.Component {
         if (day < 10)
             day = "0" + day;
         var today = year + '-' + month + '-' + day;
-        $('.date-input').val(today);
+        $('.date-input input').val(today);
         console.log(currentTime)
-        $('.time-input').val(currentTime);
+        $('.time').val(currentTime);
         $('.add-item-form').addClass('show-form');
         $('.event-description, .description-label, .location-input, .location-label, .time-input, .time-label').addClass('show-input');
 
@@ -63,8 +64,8 @@ class Add_item extends React.Component {
         } else if ($(e.currentTarget).hasClass('item_2')) {
             console.log("Reminder")
             $(e.currentTarget).addClass('selected');
-            $('.time-input, .time-label').addClass('show-input');
-            $('.event-description, .description-label, .location-input, .location-label').removeClass('show-input');
+            $('.time-input, .time-label, .location-input, .location-label').addClass('show-input');
+            $('.event-description, .description-label').removeClass('show-input');
             $('.amount-input, .amount-label').removeClass('show-input');
         } else if ($(e.currentTarget).hasClass('item_3')) {
             console.log("Task")
@@ -122,66 +123,90 @@ class Add_item extends React.Component {
                         <div onClick={this.closeForm} className="close-form entypo-down-open"></div>
                     </div>
                     <form>
-                        <label>Title</label>
-                        <input type="text" className="item-title" placeholder="Title or name"/>
+                        <div className="group">
+                            <div className="input-wrapper">
+                                <label>Select Type</label>
+                                <div className="select-item">
+                                    <input className="checkbox" type="checkbox" id="checkbox1" defaultChecked />
+                                    <label onClick={this.selectItemEvent}htmlFor="checkbox1" className="item_1">Event</label>
 
-                        <label>Select Type</label>
-                        <div className="select-item">
-                            <input className="checkbox" type="checkbox" id="checkbox1" defaultChecked />
-                            <label onClick={this.selectItemEvent}htmlFor="checkbox1" className="item_1">Event</label>
+                                    <input className="checkbox" type="checkbox" id="checkbox2" />
+                                    <label onClick={this.selectItemEvent}htmlFor="checkbox2" className="item_2">Reminder</label>
 
-                            <input className="checkbox" type="checkbox" id="checkbox2" />
-                            <label onClick={this.selectItemEvent}htmlFor="checkbox2" className="item_2">Reminder</label>
+                                    <input className="checkbox" type="checkbox" id="checkbox3" />
+                                    <label onClick={this.selectItemEvent}htmlFor="checkbox3" className="item_3">Task</label>
 
-                            <input className="checkbox" type="checkbox" id="checkbox3" />
-                            <label onClick={this.selectItemEvent}htmlFor="checkbox3" className="item_3">Task</label>
+                                    <input className="checkbox" type="checkbox" id="checkbox4" />
+                                    <label onClick={this.selectItemEvent}htmlFor="checkbox4" className="item_4">Budget</label>
 
-                            <input className="checkbox" type="checkbox" id="checkbox4" />
-                            <label onClick={this.selectItemEvent}htmlFor="checkbox4" className="item_4">Budget</label>
+                                    <input className="checkbox" type="checkbox" id="checkbox5" />
+                                    <label onClick={this.selectItemEvent}htmlFor="checkbox5" className="item_5">Food</label>
+                                </div>
+                            </div>
 
-                            <input className="checkbox" type="checkbox" id="checkbox5" />
-                            <label onClick={this.selectItemEvent}htmlFor="checkbox5" className="item_5">Food</label>
+                            <div className="input-wrapper item-title">
+                                <label>Title</label>
+                                <input type="text" placeholder="Title or name" />
+                            </div>
+
+                            <div className="input-wrapper event-description">
+                                <label className="description-label">Description</label>
+                                <textarea placeholder="Add description"></textarea>
+                            </div>
+
+                            <div className="input-wrapper location-input">
+                                <label className="location-label">Location</label>
+                                <input type="text" placeholder="Location" />
+                            </div>
+
+                            <div className="input-wrapper amount-input">
+                                <label className="amount-label">Amount</label>
+                                <input type="text" placeholder="Amount" />
+                            </div>
+
+                        </div>
+                        <div className="group">
+
+                            <div className="input-wrapper">
+                                <label>Select Frequency</label>
+                                <div className="checkbox">
+                                    <input className="frequency first-checkbox" type="checkbox" id="frequency1" value="Once" defaultChecked />
+                                    <label onClick={this.selectItemFreq} htmlFor="frequency1" className="frequency_1">Once</label>
+
+                                    <input className="frequency" type="checkbox" value="Daily" id="frequency2" />
+                                    <label onClick={this.selectItemFreq} htmlFor="frequency2" className="frequency_2">Daily</label>
+
+                                    <input className="frequency" type="checkbox" value="Weekly" id="frequency3" />
+                                    <label onClick={this.selectItemFreq} htmlFor="frequency3" className="frequency_3">Weekly</label>
+
+                                    <input className="frequency" type="checkbox" value="Bi-weekly" id="frequency4" />
+                                    <label onClick={this.selectItemFreq} htmlFor="frequency4" className="frequency_4">Bi-Weekly</label>
+
+                                    <input className="frequency" type="checkbox" value="Monthly" id="frequency5" />
+                                    <label onClick={this.selectItemFreq} htmlFor="frequency5" className="frequency_5">Monthly</label>
+
+                                    <input className="frequency" type="checkbox" value="Semi-annual" id="frequency6" />
+                                    <label onClick={this.selectItemFreq} htmlFor="frequency6" className="frequency_6">Semi-annual</label>
+
+                                    <input className="frequency" type="checkbox" value="Annual" id="frequency7" />
+                                    <label onClick={this.selectItemFreq} htmlFor="frequency7" className="frequency_7">Annual</label>
+                                </div>
+                            </div>
+
+                            <div className="input-wrapper date-input">
+                                <label>Select Date</label>
+                                <input type="date" />
+                            </div>
+
+                            <div className="input-wrapper time-input">
+                                <label className="time-label">Select Time</label>
+                                <input type="time" className="time" />
+                            </div>
                         </div>
 
-                        <label>Select Date</label>
-                        <input className="date-input" type="date" />
-
-                        <label className="time-label">Select Time</label>
-                        <input className="time-input" type="time" />
-
-                        <label>Select Frequency</label>
-                        <div className="checkbox">
-                            <input className="frequency first-checkbox" type="checkbox" id="frequency1" value="Once" defaultChecked />
-                            <label onClick={this.selectItemFreq} htmlFor="frequency1" className="frequency_1">Once</label>
-
-                            <input className="frequency" type="checkbox" value="Daily" id="frequency2" />
-                            <label onClick={this.selectItemFreq} htmlFor="frequency2" className="frequency_2">Daily</label>
-
-                            <input className="frequency" type="checkbox" value="Weekly" id="frequency3" />
-                            <label onClick={this.selectItemFreq} htmlFor="frequency3" className="frequency_3">Weekly</label>
-
-                            <input className="frequency" type="checkbox" value="Bi-weekly" id="frequency4" />
-                            <label onClick={this.selectItemFreq} htmlFor="frequency4" className="frequency_4">Bi-Weekly</label>
-
-                            <input className="frequency" type="checkbox" value="Monthly" id="frequency5" />
-                            <label onClick={this.selectItemFreq} htmlFor="frequency5" className="frequency_5">Monthly</label>
-
-                            <input className="frequency" type="checkbox" value="Semi-annual" id="frequency6" />
-                            <label onClick={this.selectItemFreq} htmlFor="frequency6" className="frequency_6">Semi-annual</label>
-
-                            <input className="frequency" type="checkbox" value="Annual" id="frequency7" />
-                            <label onClick={this.selectItemFreq} htmlFor="frequency7" className="frequency_7">Annual</label>
+                        <div className="input-wrapper">
+                            <button className="submit-form" type="submit">Enter</button>
                         </div>
-
-                        <label className="description-label">Description</label>
-                        <input type="text" className="event-description" placeholder="Add description"/>
-
-                        <label className="location-label">Location</label>
-                        <input type="text" className="location-input" placeholder="Location"/>
-
-                        <label className="amount-label">Amount</label>
-                        <input type="text" className="amount-input" placeholder="Amount"/>
-                        <button className="submit-form" type="submit">Enter</button>
                     </form>
                 </div>
             </div>

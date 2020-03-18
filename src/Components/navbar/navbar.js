@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import '..//..//SCSS/App.scss';
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -17,15 +18,19 @@ class Navbar extends React.Component {
         return (
             <header>
                 <button onClick={this.clickNav} className="mobile-nav-toggle hamburger hamburger--squeeze">
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
+                    <span className="hamburger-box">
+                        <span className="hamburger-inner"></span>
                     </span>
-                    <span class="hamburger-label">Menu</span>
+                    <span className="hamburger-label">Menu</span>
                 </button>
                 <ul>
-                    <li><a href="/signup">Signup</a></li>
+                    <Link to="/signup">
+                        <li>Signup</li>
+                    </Link>
                     <li><a>Login</a></li>
-                    <li><a href="/calendar">Calendar</a></li>
+                    <Link to="/calendar">
+                    <li>Calendar</li>
+                    </Link>
                     <li><a>Settings</a></li>
                 </ul>
             </header>

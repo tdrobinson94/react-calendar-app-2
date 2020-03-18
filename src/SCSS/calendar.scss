@@ -282,6 +282,7 @@ $alert: red;
 
         &.dead_month_color {
           opacity: .5;
+          pointer-events: none;
         }
 
         &.clicked-day {
@@ -307,7 +308,7 @@ $alert: red;
               margin: auto;
               z-index: 999;
               width: 100%;
-              height: 400px;
+              height: 50%;
               top: 50%;
               position: fixed;
               transform: translate(0, -50%);
@@ -399,7 +400,7 @@ $alert: red;
       position: fixed;
       margin: auto;
       bottom: 50%;
-      height: 400px;
+      height: 50%;
       width: 100%;
       max-width: $end-small;
       overflow: initial;
@@ -455,6 +456,24 @@ $alert: red;
       padding: 20px;
       margin: auto;
 
+      @media screen and (min-width: $end-small) {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .group {
+          width: 47%;
+        }
+
+        .input-wrapper {
+          width: 100%;
+
+          div:first-of-type {
+            height: 105px;
+          }
+        }
+      }
+
       label {
         display: block;
         margin: 0;
@@ -466,7 +485,7 @@ $alert: red;
       .select-item, .checkbox {
         display: flex;
         justify-content: space-evenly;
-        align-items: center;
+        align-items: start;
         flex-wrap: wrap;
         margin: 20px 0;
         input {
@@ -490,7 +509,7 @@ $alert: red;
         }
       }
 
-        select, .date-input, .item-title, .event-description, .amount-input, .location-input, .time-input {
+        select, .date-input input, .item-title input, .event-description textarea, .amount-input input, .location-input input, .time-input input{
         width: 100%;
         padding: 10px;
         border: 1px solid #c4c7cc;
@@ -500,6 +519,16 @@ $alert: red;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         font-size: 15px;
+      }
+
+      .date-input, .time-input {
+        input {
+          padding: 7.5px;
+        }
+      }
+
+      textarea {
+        height: 75px;
       }
 
       .event-description, .description-label, .amount-input, .amount-label, .location-label, .location-input, .time-input, .time-label {
