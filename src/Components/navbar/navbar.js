@@ -35,11 +35,11 @@ class Navbar extends React.Component {
                     <Link to="/signup" onClick={this.clickLink}>
                         <li>Signup</li>
                     </Link>
-                    <li><a>Login</a></li>
+                    <li>Login</li>
                     <Link to="/calendar" onClick={this.clickLink}>
                     <li>Calendar</li>
                     </Link>
-                    <li><a>Settings</a></li>
+                    <li>Settings</li>
                 </ul>
             </header>
         );

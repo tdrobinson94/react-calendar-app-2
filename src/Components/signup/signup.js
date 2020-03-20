@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import Aux from '..//layout/aux';
+import Aux from '../layout/Aux';
 import '..//..//SCSS/calendar.scss';
 
 class Signup extends React.Component {

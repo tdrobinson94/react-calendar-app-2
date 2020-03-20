@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '..//navbar/navbar';
-import Aux from './aux';
+import Aux from './Aux';
 
 class Layout extends React.Component {
     constructor(props) {
