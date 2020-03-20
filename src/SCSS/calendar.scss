@@ -400,7 +400,7 @@ $alert: red;
       position: fixed;
       margin: auto;
       bottom: 50%;
-      height: 50%;
+      height: 400px;
       width: 100%;
       max-width: $end-small;
       overflow: initial;
@@ -443,7 +443,7 @@ $alert: red;
     .form-nav {
       position: sticky;
       top: 0;
-      padding: 20px 0 20px 20px;
+      padding: 15px 0 15px 20px;
       background: $alert;
       color: $textwht;
       h2 {
@@ -576,7 +576,7 @@ $alert: red;
       display: block;
       position: absolute;
       right: 0;
-      top: 22px;
+      top: 17px;
       font-size: 27px;
       padding: 0px 20px;
       cursor: pointer;

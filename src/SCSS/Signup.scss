@@ -1,0 +1,101 @@
+@import url(https://weloveiconfonts.com/api/?family=entypo|fontawesome);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+/* =================================================================
+variables
+================================================================= */
+//Breakpoints
+$sm-small: 320px;
+$mid-small: 550px;
+$end-small: 800px;
+$max-width: 1400px;
+
+//System variables
+$primary: red;// #00B0FF;
+// $primary-contrast: #005f90;
+$accent: lightgray;
+$textwht: #fff;
+$textdrk: #333333;
+$alert: red;
+
+.signup-form {
+    display: block;
+    margin: auto;
+    top: 50%;
+    width: 100%;
+    left: 50%;
+    background-color: #fff;
+    float: none;
+    overflow: auto;
+    color: #333333;
+
+    @media screen and (min-width: $end-small) {
+        height: 400px;
+    }
+
+    @media screen and (min-width: $end-small) {
+        position: fixed;
+        max-width: 800px;
+        transform: translate(-50%, -50%);
+        box-shadow: 1px 1px 10px #333333;
+    }
+
+    .form-nav {
+        padding: 15px 0 15px 0px;
+        background: red;
+        color: #fff;
+        text-align: center;
+
+        h2 {
+            margin: 0;
+        }
+    }
+
+    form {
+        padding: 20px;
+        .input-wrapper {
+          width: 100%;
+        }
+
+        label {
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #c4c7cc;
+        border-radius: 5px;
+        margin: 10px 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 15px;
+      }
+
+      button.signup {
+        background-color: red;
+        color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+        border: 0;
+        font-size: 15px;
+        float: right;
+        margin: 20px 0;
+      }
+    }
+}
+
