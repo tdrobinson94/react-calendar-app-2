@@ -18,14 +18,14 @@ class Calendar_controls extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener('load', this.handleChange);
+        this.handleChange();
     }
 
     componentWillUnmount() {
-        window.removeEventListener('load', this.handleChange)
+        this.handleChange();
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
         $('.add-item-form').removeClass('show-form');
         $('.num-box').removeClass('clicked-day');
         $('.num-date').removeClass('first-day current-day');
@@ -179,7 +179,7 @@ class Calendar_controls extends React.Component {
     }
     
 
-    prevClick(e) {
+    prevClick = (e) => {
         $('.extra').hide()
         $('.add-item-form').removeClass('show-form');
         $('.num-box').removeClass('selected-day double-click');
@@ -207,7 +207,7 @@ class Calendar_controls extends React.Component {
         window.setTimeout(scrollDay, 500);
     }
 
-    currentClick(e) {
+    currentClick = (e) => {
         $('.extra').hide()
         $('.add-item-form').removeClass('show-form');
         $('.num-box').removeClass('selected-day double-click');
@@ -219,7 +219,7 @@ class Calendar_controls extends React.Component {
         $('body, html').animate({ scrollTop: $('.day_background_color').offset().top - 200 }, 500);
     }
 
-    nextClick(e) {
+    nextClick = (e) => {
         $('.extra').hide()
         $('.add-item-form').removeClass('show-form');
         $('.num-box').removeClass('selected-day double-click');

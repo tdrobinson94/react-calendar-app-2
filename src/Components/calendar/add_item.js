@@ -11,7 +11,7 @@ class Add_item extends React.Component {
         this.selectItemFreq = this.selectItemFreq.bind(this);
     }
 
-    openForm(e) {
+    openForm = (e) =>  {
         let clock = new Date();
         let day = $('.clicked-day').attr('value');
         let minutes = String(clock.getMinutes()).padStart(2, '0');
@@ -42,7 +42,7 @@ class Add_item extends React.Component {
         $('.checkbox label.frequency_1').addClass('selected');
     }
 
-    closeForm(e) {
+    closeForm = (e) => {
         $('.add-item-form').removeClass('show-form');
 
         function scrollDay() {
@@ -52,7 +52,7 @@ class Add_item extends React.Component {
         window.setTimeout(scrollDay, .3);
     }
 
-    selectItemEvent(e) {
+    selectItemEvent = (e) => {
         $('.checkbox').not(e.currentTarget).prop('checked', false);
         $('.select-item label').removeClass('selected');
 
@@ -85,7 +85,7 @@ class Add_item extends React.Component {
         }
     }
 
-    selectItemFreq(e) {
+    selectItemFreq = (e) => {
         $('.frequency').not(e.currentTarget).prop('checked', false);
         $('.checkbox label').removeClass('selected');
 

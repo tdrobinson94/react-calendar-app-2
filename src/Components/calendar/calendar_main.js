@@ -9,7 +9,7 @@ class Calendar_main extends React.Component {
     }
 
 
-    clickonDay(e) {
+    clickonDay = (e) => {
         $('.num-box').removeClass('clicked-day');
         $('.add-item-form').removeClass('show-form');
         $('.extra').hide();
@@ -34,7 +34,7 @@ class Calendar_main extends React.Component {
         window.setTimeout(scrollDay, .3);
     }
 
-    closeDay(e) {
+    closeDay = (e) => {
         console.log('closing day');
         $('.num-box').removeClass('double-click');
         $('.extra').hide();

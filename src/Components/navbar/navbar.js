@@ -7,11 +7,19 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.clickNav = this.clickNav.bind(this);
+        this.clickLink = this.clickLink.bind(this);
     }
     
-    clickNav(e){
+    clickNav = (e) => {
         $('.hamburger').toggleClass('is-active');
         $('header ul').slideToggle().addClass('show-nav');
+    }
+
+    clickLink = (e) => {
+        if ($(window).width() < 500) {
+            $('.hamburger').toggleClass('is-active');
+            $('header ul').slideToggle().removeClass('show-nav');
+        }
     }
 
     render() {
@@ -24,11 +32,11 @@ class Navbar extends React.Component {
                     <span className="hamburger-label">Menu</span>
                 </button>
                 <ul>
-                    <Link to="/signup">
+                    <Link to="/signup" onClick={this.clickLink}>
                         <li>Signup</li>
                     </Link>
                     <li><a>Login</a></li>
-                    <Link to="/calendar">
+                    <Link to="/calendar" onClick={this.clickLink}>
                     <li>Calendar</li>
                     </Link>
                     <li><a>Settings</a></li>
