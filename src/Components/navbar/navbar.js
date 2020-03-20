@@ -32,6 +32,9 @@ class Navbar extends React.Component {
                     <span className="hamburger-label">Menu</span>
                 </button>
                 <ul>
+                    <Link to="/" onClick={this.clickLink}>
+                        <li>Home</li>
+                    </Link>
                     <Link to="/signup" onClick={this.clickLink}>
                         <li>Signup</li>
                     </Link>
