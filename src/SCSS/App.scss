@@ -63,10 +63,8 @@ header {
   background-color: red;
   z-index: 99999;
 
-  button {
-    margin: 20px;
+  button.mobile-nav-toggle {
     border: none;
-    padding: 2.3px;
     @media screen and (min-width: $mid-small) {
       display: none !important;
     }
@@ -94,6 +92,7 @@ header {
     list-style: none;
     margin: 0;
     padding: 0;
+    height: auto;
 
     @media screen and (min-width: $mid-small) {
       display: flex !important;

@@ -4,6 +4,7 @@ import { Route, Link, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Layout from './Components/layout/layout';
 import Calendar from './Components/calendar/calendar';
 import Signup from './Components/signup/signup';
+import Login from './Components/signup/login';
 import Home from './Components/home/home';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
               <Route path="/calendar" component={Calendar} />
             </Switch>
           </Layout>

@@ -54,6 +54,8 @@ $alert: red;
         background: red;
         color: #fff;
         text-align: center;
+        position: sticky;
+        top: 0;
 
         h2 {
             margin: 0;
@@ -86,7 +88,7 @@ $alert: red;
         font-size: 15px;
       }
 
-      button.signup {
+      .signup, .login {
         background-color: red;
         color: #fff;
         border-radius: 10px;

@@ -8,6 +8,7 @@ class Navbar extends React.Component {
         super(props);
         this.clickNav = this.clickNav.bind(this);
         this.clickLink = this.clickLink.bind(this);
+        this.toggleFullscreen = this.toggleFullscreen.bind(this);
     }
     
     clickNav = (e) => {
@@ -19,6 +20,12 @@ class Navbar extends React.Component {
         if ($(window).width() < 500) {
             $('.hamburger').toggleClass('is-active');
             $('header ul').slideToggle().removeClass('show-nav');
+        }
+    }
+
+    toggleFullscreen = (e) => {
+        if ($(window).width() < 500) {
+            // $('#root').requestFullscreen();
         }
     }
 
@@ -38,11 +45,15 @@ class Navbar extends React.Component {
                     <Link to="/signup" onClick={this.clickLink}>
                         <li>Signup</li>
                     </Link>
-                    <li>Login</li>
-                    <Link to="/calendar" onClick={this.clickLink}>
-                    <li>Calendar</li>
+                    <Link to="/login" onClick={this.clickLink}>
+                        <li>Login</li>
                     </Link>
-                    <li>Settings</li>
+                    <Link to="/calendar" onClick={this.clickLink}>
+                        <li>Calendar</li>
+                    </Link>
+                    <Link>
+                        <li>Settings</li>
+                    </Link>
                 </ul>
             </header>
         );
