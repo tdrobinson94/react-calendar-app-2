@@ -37,7 +37,7 @@ $alert: red;
     z-index: 1;
     position: sticky;
     padding: 9px 0;
-    // border-radius: 15px;
+    border-radius: 0 0 15px 15px;
     background-color: $primary;
     .controls {
       display: flex;
