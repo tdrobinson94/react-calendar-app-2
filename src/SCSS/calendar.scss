@@ -170,14 +170,19 @@ $alert: red;
       justify-content: center;
       padding: 10px 0 5px 0;
 
-      @media screen and (max-width: $end-small) {
-        display: none !important;
-      }
+      // @media screen and (max-width: $end-small) {
+      //   display: none !important;
+      // }
 
       div {
         width: 24%;
         text-align: center;
         opacity: .45;
+
+        &:nth-child(even) {
+          border-right: 1px solid $textdrk;
+          border-left: 1px solid $textdrk;
+        }
       }
     }
   }
@@ -198,6 +203,7 @@ $alert: red;
       display: flex;
       justify-content: center;
       height: 36.7%;
+      margin-top: 10px;
 
       @media screen and (min-width: $end-small) {
         height: 41.7%;
@@ -219,8 +225,9 @@ $alert: red;
         background-color: $textwht;
         position: relative;
         outline: none;
-        border: 1px solid $accent;
+        // border: 1px solid $accent;
         transition: all .1s ease-in-out;
+        border-radius: 10px;
 
         .close-day{
           display: none;
@@ -412,22 +419,22 @@ $alert: red;
       overflow: auto;
       transform: translate(50%, 50%);
       color: $textdrk;
-      border-radius: 0;
+      border-radius: 10px 0 0 10px;
 
       //Edit scrollbar look and feel
-      // &::-webkit-scrollbar {
-      //   width: 3px;
-      // }
-      // &::-webkit-scrollbar-track {
-      //   background: white; 
-      // }
-      // &::-webkit-scrollbar-thumb {
-      //   background: $textdrk;
-      //   border-radius: 20px;
-      // }
-      // &::-webkit-scrollbar-thumb:hover {
-      //   background: $textdrk; 
-      // }
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        background: white;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, .2);
+        border-radius: 50px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba(126, 93, 93, 0.7); 
+      }
 
       @media screen and (max-width: $end-small) {
         width: 100%;
@@ -436,6 +443,7 @@ $alert: red;
         bottom: 0;
         height: 100%;
         transform: translateX(0);
+        border-radius: 0;
       }
 
     }

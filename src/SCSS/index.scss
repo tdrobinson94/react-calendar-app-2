@@ -1,6 +1,20 @@
 html {
   height: 100%;
   width: 100%;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .2);
+    border-radius: 50px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(126, 93, 93, 0.7); 
+  }
 }
 body {
   margin: 0;

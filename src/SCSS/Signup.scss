@@ -38,6 +38,20 @@ $alert: red;
     overflow: auto;
     color: #333333;
 
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, .2);
+      border-radius: 50px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(126, 93, 93, 0.7); 
+    }
+
     @media screen and (min-width: $end-small) {
         height: 400px;
     }
@@ -47,6 +61,7 @@ $alert: red;
         max-width: 800px;
         transform: translate(-50%, -50%);
         box-shadow: 1px 1px 10px #333333;
+        border-radius: 10px;
     }
 
     .form-nav {

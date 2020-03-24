@@ -51,7 +51,7 @@ class Navbar extends React.Component {
                     <Link to="/calendar" onClick={this.clickLink}>
                         <li>Calendar</li>
                     </Link>
-                    <Link>
+                    <Link to="">
                         <li>Settings</li>
                     </Link>
                 </ul>
