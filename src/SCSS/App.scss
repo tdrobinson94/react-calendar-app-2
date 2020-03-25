@@ -96,7 +96,7 @@ header {
 
     @media screen and (min-width: $mid-small) {
       display: flex !important;
-      justify-content: space-evenly;
+      justify-content: space-around;
       align-items: center;
       padding: 20px;
       top: 0 !important;
