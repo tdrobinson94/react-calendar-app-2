@@ -1,15 +1,17 @@
 import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+import { withCookies, Cookies } from 'react-cookie';
 import Aux from '../layout/Aux';
 import '..//..//SCSS/Signup.scss';
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
+        const { cookies } = props;
         this.state = {
             username: '',
-            password: ''
+            password: '',
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
@@ -35,21 +37,24 @@ class Login extends React.Component {
         axios.post('https://react-calendar-backend-api.herokuapp.com/login', this.state)
 
             .then(response => {
-                console.log(response)
+                console.log(response.data.message)
 
-                if(response.status === 204) {
+                if(response.data.message === 'Password match') {
+                    const { cookies } = this.props;
+                    // cookies.set('user_id', response.data.id, { path: '/signup' })
+                    this.setState({
+                        password: ''
+                    })
+                    $('.signup-form').animate({ scrollTop: 0 }, 500);
+                    $('.success-message').addClass('show-success');
+                    this.props.history.push('/calendar')
+                } else {
                     this.setState({
                         username: '',
                         password: ''
                     })
                     $('.signup-form').animate({ scrollTop: 0 }, 500);
                     $('.fail-message').addClass('show-fail');
-                } else {
-                    this.setState({
-                        password: ''
-                    })
-                    $('.signup-form').animate({ scrollTop: 0 }, 500);
-                    $('.success-message').addClass('show-success');
                 }
             })
 
@@ -79,11 +84,11 @@ class Login extends React.Component {
                     <form className="signupForm" onSubmit={this.submitHandler} ref={form => this.form = form}>
                         <div className="input-wrapper username">
                             <label>Username</label>
-                            <input name="username" type="text" placeholder="Username" value={username} onChange={this.changeHandler}/>
+                            <input name="username" type="text" placeholder="Username" value={username} onChange={this.changeHandler} required/>
                         </div>
                         <div className="input-wrapper email">
                             <label>Password</label>
-                            <input name="password" type="password" placeholder="Password" value={password} onChange={this.changeHandler}/>
+                            <input name="password" type="password" placeholder="Password" value={password} onChange={this.changeHandler} required/>
                         </div>
                         <div className="input-wrapper">
                             <button className="login" type="submit">Login</button>

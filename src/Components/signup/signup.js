@@ -39,6 +39,7 @@ class Signup extends React.Component {
 
         .then(response => {
             console.log(response)
+            console.log(response.data.message)
             if (response.status === 201) {
                 this.setState({
                     firstname: '',
@@ -49,6 +50,7 @@ class Signup extends React.Component {
                 })
                 $('.signup-form').animate({ scrollTop: 0 }, 500);
                 $('.success-message').addClass('show-success');
+                this.props.history.push('/login')
             } 
         })
 
@@ -83,30 +85,30 @@ class Signup extends React.Component {
                     <form className="signupForm" onSubmit={this.submitHandler} ref={form => this.form = form}>
                         <div className="input-wrapper item-name">
                             <label>First Name</label>
-                            <input name="firstname" type="text" placeholder="First name" value={firstname} onChange={this.changeHandler}/>
+                            <input name="firstname" type="text" placeholder="First name" value={firstname} onChange={this.changeHandler} required/>
                         </div>
                         <div className="input-wrapper item-name">
                             <label>Last Name</label>
-                            <input name="lastname" type="text" placeholder="Last Name" value={lastname} onChange={this.changeHandler}/>
+                            <input name="lastname" type="text" placeholder="Last Name" value={lastname} onChange={this.changeHandler} required/>
                         </div>
                         <div className="input-wrapper username">
                             <label>Username</label>
-                            <input name="username" type="text" placeholder="Username" value={username} onChange={this.changeHandler}/>
+                            <input name="username" type="text" placeholder="Username" value={username} onChange={this.changeHandler} required/>
                         </div>
                         <div className="input-wrapper email">
                             <label>Email</label>
-                            <input name="email" type="email" placeholder="Email" value={email} onChange={this.changeHandler}/>
+                            <input name="email" type="email" placeholder="Email" value={email} onChange={this.changeHandler} required/>
                         </div>
                         <div className="input-wrapper email">
                             <label>Password</label>
-                            <input name="password" type="password" placeholder="Password" value={password} onChange={this.changeHandler}/>
+                            <input name="password" type="password" placeholder="Password" value={password} onChange={this.changeHandler} required/>
                         </div>
                         <div className="input-wrapper">
                             <button className="signup" type="submit">Signup</button>
                         </div>
                     </form>
-                    <div className="success-message">Hi, you've are now signed up. Try logging in.</div>
-                    <div className="fail-message">Hi, you haven't been signed up. Username or Email may already be in use. <div className="close-popup entypo-cancel" onClick={this.closePopup}></div></div>
+                    <div className="success-message">You are now signed up. Try logging in.</div>
+                    <div className="fail-message">Email or Username has been taken by someone else. <div className="close-popup entypo-cancel" onClick={this.closePopup}></div></div>
                 </div>
             </Aux>
         );
