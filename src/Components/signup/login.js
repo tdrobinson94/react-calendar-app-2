@@ -13,7 +13,8 @@ class Login extends React.Component {
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
-        this.onStart = this.onStart.bind(this);
+        this.onStart = this.onStart.bind(this)
+        this.closePopup = this.closePopup.bind(this)
     }
 
     componentDidMount() {
@@ -35,22 +36,38 @@ class Login extends React.Component {
 
             .then(response => {
                 console.log(response)
-                // $('.success-message').addClass('show-success');
+
+                if(response.status === 204) {
+                    this.setState({
+                        username: '',
+                        password: ''
+                    })
+                    $('.signup-form').animate({ scrollTop: 0 }, 500);
+                    $('.fail-message').addClass('show-fail');
+                } else {
+                    this.setState({
+                        password: ''
+                    })
+                    $('.signup-form').animate({ scrollTop: 0 }, 500);
+                    $('.success-message').addClass('show-success');
+                }
             })
 
             .catch(error => {
                 console.log(error)
             })
-
-            this.setState({ 
-                password: ''
-            })
-            $('.signup-form').animate({ scrollTop: 0 }, 500);
     }
 
     onStart = (e) => {
         $('body, html').animate({ scrollTop: 0}, 500);
     }
+
+    closePopup = (e) => {
+        $('.success-message').removeClass('show-success');
+        $('.fail-message').removeClass('show-fail');
+    }
+
+
     render() {
         const {  username, password } = this.state
         return (
@@ -72,8 +89,8 @@ class Login extends React.Component {
                             <button className="login" type="submit">Login</button>
                         </div>
                     </form>
-                    <div class="success-message">Hi {username}, you are now logged in.</div>
-                    <div class="fail-message">Hi {username}, you haven't been logged in. Username or Password is incorrect.</div>
+                    <div className="success-message">Hi {username}, you are now logged in.</div>
+                    <div className="fail-message">Hi, you haven't been logged in. Username or Password is incorrect. <div className="close-popup entypo-cancel" onClick={this.closePopup}></div></div>
                 </div>
             </Aux>
         );

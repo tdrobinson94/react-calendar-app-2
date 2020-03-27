@@ -120,13 +120,20 @@ $alert: red;
     }
     .show-success, .show-fail {
       display: block;
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 40px;
       background: red;
       color: #fff;
+
+      .close-popup {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        cursor: pointer;
+      }
     }
 }
 

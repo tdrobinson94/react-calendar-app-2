@@ -17,6 +17,7 @@ class Signup extends React.Component {
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
         this.onStart = this.onStart.bind(this);
+        this.closePopup = this.closePopup.bind(this)
     }
 
     componentDidMount() {
@@ -38,25 +39,39 @@ class Signup extends React.Component {
 
         .then(response => {
             console.log(response)
+            if (response.status === 201) {
+                this.setState({
+                    firstname: '',
+                    lastname: '',
+                    username: '',
+                    email: '',
+                    password: ''
+                })
+                $('.signup-form').animate({ scrollTop: 0 }, 500);
+                $('.success-message').addClass('show-success');
+            } 
         })
 
         .catch(error => {
             console.log(error)
+            this.setState({
+                username: '',
+                email: ''
+            })
+            $('.signup-form').animate({ scrollTop: 0 }, 500);
+            $('.fail-message').addClass('show-fail');
         })
-
-        this.setState({
-            firstname: '',
-            lastname: '',
-            username: '',
-            email: '',
-            password: ''
-        })
-        $('.signup-form').animate({ scrollTop: 0 }, 500);
     }
 
     onStart = (e) => {
         $('body, html').animate({ scrollTop: 0}, 500);
     }
+
+    closePopup = (e) => {
+        $('.success-message').removeClass('show-success');
+        $('.fail-message').removeClass('show-fail');
+    }
+
     render() {
         const { firstname, lastname, username, email, password } = this.state 
         return (
@@ -90,6 +105,8 @@ class Signup extends React.Component {
                             <button className="signup" type="submit">Signup</button>
                         </div>
                     </form>
+                    <div className="success-message">Hi, you've are now signed up. Try logging in.</div>
+                    <div className="fail-message">Hi, you haven't been signed up. Username or Email may already be in use. <div className="close-popup entypo-cancel" onClick={this.closePopup}></div></div>
                 </div>
             </Aux>
         );
