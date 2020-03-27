@@ -128,6 +128,10 @@ $alert: red;
       background: red;
       color: #fff;
 
+      @media screen and (max-width: $end-small) {
+        width: 80%;
+      }
+
       .close-popup {
         position: absolute;
         top: 15px;
