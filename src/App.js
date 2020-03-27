@@ -17,9 +17,9 @@ class App extends React.Component {
             <Layout>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />
-                <Route path="/calendar" component={Calendar} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/calendar" component={Calendar} />
               </Switch>
             </Layout>
           </div>

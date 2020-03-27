@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import Aux from '../layout/Aux';
 import '..//..//SCSS/Signup.scss';
@@ -12,6 +13,7 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
+            toCalendar: false
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
@@ -43,11 +45,10 @@ class Login extends React.Component {
                     const { cookies } = this.props;
                     // cookies.set('user_id', response.data.id, { path: '/signup' })
                     this.setState({
-                        password: ''
+                        password: '',
+                        toCalendar: true
                     })
                     $('.signup-form').animate({ scrollTop: 0 }, 500);
-                    $('.success-message').addClass('show-success');
-                    this.props.history.push('/calendar')
                 } else {
                     this.setState({
                         username: '',
@@ -75,6 +76,10 @@ class Login extends React.Component {
 
     render() {
         const {  username, password } = this.state
+        if (this.state.toCalendar === true) {
+            return <Redirect to='/calendar' />
+        }
+
         return (
             <Aux>
                 <div className="signup-form">

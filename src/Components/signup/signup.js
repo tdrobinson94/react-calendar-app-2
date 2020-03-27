@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import Aux from '../layout/Aux';
 import '..//..//SCSS/Signup.scss';
 
@@ -12,7 +13,8 @@ class Signup extends React.Component {
             lastname: '',
             username: '',
             email: '',
-            password: ''
+            password: '',
+            toLogin: false
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
@@ -46,11 +48,10 @@ class Signup extends React.Component {
                     lastname: '',
                     username: '',
                     email: '',
-                    password: ''
+                    password: '',
+                    toLogin: true
                 })
                 $('.signup-form').animate({ scrollTop: 0 }, 500);
-                $('.success-message').addClass('show-success');
-                this.props.history.push('/login')
             } 
         })
 
@@ -76,6 +77,9 @@ class Signup extends React.Component {
 
     render() {
         const { firstname, lastname, username, email, password } = this.state 
+        if (this.state.toLogin === true) {
+            return <Redirect to='/login' />
+        }
         return (
             <Aux>
                 <div className="signup-form">
