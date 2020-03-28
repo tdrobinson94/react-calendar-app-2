@@ -14,7 +14,8 @@ class Signup extends React.Component {
             username: '',
             email: '',
             password: '',
-            toLogin: false
+            toLogin: false,
+            userSignedUp: false
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
@@ -36,11 +37,14 @@ class Signup extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        console.log(this.state)
         axios.post('https://react-calendar-backend-api.herokuapp.com/signup', this.state)
 
         .then(response => {
-            console.log(response)
+            console.log('users id:' + response.data.data.id)
+            console.log('users firstname:' + response.data.data.firstname)
+            console.log('users lastname:' + response.data.data.lastname)
+            console.log('users email:' + response.data.data.email)
+            console.log('users username:' + response.data.data.username)
             console.log(response.data.message)
             if (response.status === 201) {
                 this.setState({
@@ -49,7 +53,8 @@ class Signup extends React.Component {
                     username: '',
                     email: '',
                     password: '',
-                    toLogin: true
+                    toLogin: true,
+                    userSignedUp: true
                 })
                 $('.signup-form').animate({ scrollTop: 0 }, 500);
             } 
@@ -76,13 +81,10 @@ class Signup extends React.Component {
     }
 
     render() {
-        const { firstname, lastname, username, email, password } = this.state 
-        if (this.state.toLogin === true) {
-            return <Redirect to='/login' />
-        }
+        const { firstname, lastname, username, email, password, userSignedUp } = this.state 
         return (
             <Aux>
-                <div className="signup-form">
+                <div className="signup-form" ref={this.props.containerRef}>
                     <div className="form-nav">
                         <h2>Signup</h2>
                     </div>
@@ -111,7 +113,7 @@ class Signup extends React.Component {
                             <button className="signup" type="submit">Signup</button>
                         </div>
                     </form>
-                    <div className="success-message">You are now signed up. Try logging in.</div>
+                    {userSignedUp && <Redirect to='/login' />}
                     <div className="fail-message">Email or Username has been taken by someone else. <div className="close-popup entypo-cancel" onClick={this.closePopup}></div></div>
                 </div>
             </Aux>

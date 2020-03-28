@@ -9,11 +9,11 @@ import '..//..//SCSS/Signup.scss';
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        const { cookies } = props;
         this.state = {
             username: '',
             password: '',
-            toCalendar: false
+            toCalendar: false,
+            userLoggedIn: false
         }
         this.changeHandler = this.changeHandler.bind(this)
         this.submitHandler = this.submitHandler.bind(this)
@@ -35,32 +35,30 @@ class Login extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        console.log(this.state)
         axios.post('https://react-calendar-backend-api.herokuapp.com/login', this.state)
 
             .then(response => {
+                console.log('users id:' + response.data.data.id)
+                console.log('users username:' + response.data.data.username)
                 console.log(response.data.message)
 
                 if(response.data.message === 'Password match') {
-                    const { cookies } = this.props;
-                    // cookies.set('user_id', response.data.id, { path: '/signup' })
                     this.setState({
-                        password: '',
-                        toCalendar: true
+                        toCalendar: true,
+                        userLoggedIn: true
                     })
                     $('.signup-form').animate({ scrollTop: 0 }, 500);
-                } else {
-                    this.setState({
-                        username: '',
-                        password: ''
-                    })
-                    $('.signup-form').animate({ scrollTop: 0 }, 500);
-                    $('.fail-message').addClass('show-fail');
-                }
+                } 
             })
 
             .catch(error => {
                 console.log(error)
+                this.setState({
+                    username: '',
+                    password: ''
+                })
+                $('.signup-form').animate({ scrollTop: 0 }, 500);
+                $('.fail-message').addClass('show-fail')
             })
     }
 
@@ -75,14 +73,11 @@ class Login extends React.Component {
 
 
     render() {
-        const {  username, password } = this.state
-        if (this.state.toCalendar === true) {
-            return <Redirect to='/calendar' />
-        }
+        const {  username, password, userLoggedIn } = this.state
 
         return (
             <Aux>
-                <div className="signup-form">
+                <div className="signup-form" ref={this.props.containerRef}>
                     <div className="form-nav">
                         <h2>Login</h2>
                     </div>
@@ -99,7 +94,7 @@ class Login extends React.Component {
                             <button className="login" type="submit">Login</button>
                         </div>
                     </form>
-                    <div className="success-message">Hi {username}, you are now logged in.</div>
+                    {userLoggedIn && <Redirect to='/calendar' />}
                     <div className="fail-message">Hi, you haven't been logged in. Username or Password is incorrect. <div className="close-popup entypo-cancel" onClick={this.closePopup}></div></div>
                 </div>
             </Aux>

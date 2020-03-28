@@ -1,6 +1,6 @@
 import React from 'react';
 import './SCSS/App.scss';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import Layout from './Components/layout/layout';
 import Calendar from './Components/calendar/calendar';
@@ -9,6 +9,9 @@ import Login from './Components/signup/login';
 import Home from './Components/home/home';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <CookiesProvider>
@@ -17,9 +20,9 @@ class App extends React.Component {
             <Layout>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/signup" component={Signup} />
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/calendar" component={Calendar} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/login" component={Login} />
+                <Route path="/calendar" component={Calendar} />
               </Switch>
             </Layout>
           </div>

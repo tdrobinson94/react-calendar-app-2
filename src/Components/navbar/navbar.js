@@ -1,7 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 import '..//..//SCSS/App.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { auth } from '..//actions/auth';
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -30,6 +32,7 @@ class Navbar extends React.Component {
     }
 
     render() {
+        // const isLogged = useSelector(state => state.isLogged)
         return (
             <header>
                 <button onClick={this.clickNav} className="mobile-nav-toggle hamburger hamburger--squeeze">
@@ -39,21 +42,33 @@ class Navbar extends React.Component {
                     <span className="hamburger-label">Menu</span>
                 </button>
                 <ul>
-                    <Link to="/" onClick={this.clickLink}>
+                    <NavLink to="/" onClick={this.clickLink}>
                         <li>Home</li>
-                    </Link>
-                    <Link to="/signup" onClick={this.clickLink}>
+                    </NavLink>
+                    <NavLink to="/signup" onClick={this.clickLink} activeStyle={{
+                        textDecoration: 'none',
+                        color: 'black'
+                    }}>
                         <li>Signup</li>
-                    </Link>
-                    <Link to="/login" onClick={this.clickLink}>
+                    </NavLink>
+                    <NavLink to="/login" onClick={this.clickLink} activeStyle={{
+                        textDecoration: 'none',
+                        color: 'black'
+                    }}>
                         <li>Login</li>
-                    </Link>
-                    <Link to="/calendar" onClick={this.clickLink}>
+                    </NavLink>
+                    <NavLink to="/calendar" onClick={this.clickLink} activeStyle={{
+                        textDecoration: 'none',
+                        color: 'black'
+                    }}>
                         <li>Calendar</li>
-                    </Link>
-                    <Link to="">
+                    </NavLink>
+                    <NavLink to="" activeStyle={{
+                        textDecoration: 'none',
+                        color: 'black'
+                    }}>
                         <li>Settings</li>
-                    </Link>
+                    </NavLink>
                 </ul>
             </header>
         );

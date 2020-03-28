@@ -37,6 +37,7 @@ $alert: red;
     float: none;
     overflow: auto;
     color: #333333;
+    z-index: 9999;
 
     &::-webkit-scrollbar {
       width: 10px;
@@ -59,6 +60,7 @@ $alert: red;
     @media screen and (min-width: $end-small) {
         position: fixed;
         max-width: 800px;
+        width: 66%;
         transform: translate(-50%, -50%);
         box-shadow: 1px 1px 10px #333333;
         border-radius: 10px;
@@ -142,3 +144,30 @@ $alert: red;
     }
 }
 
+.right-side {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 30%;
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $textwht;
+  width: 100px;
+
+}
+
+
+.right {
+  right: 10%;
+  transform: translate(25%, -50%);
+
+  @media screen and (min-width: $end-small) {
+
+  }
+}
+.left {
+  left: 0;
+  transform: translate(0, -50%)
+}
